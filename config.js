@@ -1,0 +1,1 @@
+window.PANOPTICO_CONFIG={GOOGLE_CLIENT_ID:"547814622661-io7htjcio2odmtu8vl0dkm3ja5t8j5ff.apps.googleusercontent.com",APP_NAME:"Panóptico — Gestão Inteligente",DRIVE_FOLDER:"Panóptico - Gestão Inteligente"};
