@@ -1,5 +1,5 @@
-const C="panoptico-gi-v3";
-const CORE=["./","index.html","styles.css","app.js","config.js","manifest.webmanifest"];
+const C="panoptico-gi-v4";
+const CORE=["./","index.html","styles.css","app.js","visitantes.js","config.js","manifest.webmanifest"];
 self.addEventListener("install",e=>e.waitUntil(caches.open(C).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting())));
 self.addEventListener("activate",e=>e.waitUntil(Promise.all([self.clients.claim(),caches.keys().then(a=>Promise.all(a.filter(k=>k!==C).map(k=>caches.delete(k))))])));
 self.addEventListener("fetch",e=>{
