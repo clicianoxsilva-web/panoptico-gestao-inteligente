@@ -14,3 +14,11 @@ O Client ID do projeto **Panóptico Gestão Inteligente** já está inserido no 
 ## Escopo solicitado
 
 O aplicativo utiliza `drive.file`, acesso limitado aos arquivos e pastas que ele próprio cria. Ele não lê os demais documentos do usuário.
+
+## Pré-cadastro de visitantes por lista (29/10/2026)
+
+No menu **Visitantes (listas)**, selecione arquivo .xlsx, .xls ou .csv. Para **50 visitantes** basta usar uma única planilha; o limite é 500 por lote (arquivo até 5 MB). Clique em **Baixar modelo CSV** para obter as colunas aceitas: Nome do visitante, Documento, Interno visitado, Parentesco, Modalidade, Data da visita, Turno e Observações. Nome e interno visitado são obrigatórios.
+
+A tela apresenta todas as 50 linhas, valida campos e marca registros duplicados no arquivo ou na base. Somente as linhas válidas são gravadas, em um lote auditável, como **PENDENTE_CONFERENCIA**. A função não autoriza visitas, não cria registros de entrada/saída e não atualiza o banco D1 do Panóptico operacional da PRBBL.
+
+**Atenção:** esta versão é um aplicativo Google Drive pessoal/independente. Antes de utilizá-la para dados reais de visitantes, a instituição deve confirmar o enquadramento LGPD, responsabilidades de tratamento e os controles de acesso e compartilhamento da pasta. Para integrar ao Panóptico operacional, será necessária implementação no Worker/D1 com autenticação e autorização por unidade.
