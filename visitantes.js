@@ -40,6 +40,10 @@ function chavePessoa(r) {
   const base = canon(r.unidade || UNIDADE) + "|" + canon(r.interno);
   return {nome: base + "|" + canon(r.nome), doc: documento(r.documento) ? base + "|" + documento(r.documento) : ""};
 }
+function valorOriginal(row, nomes) {
+  for (const key of Object.keys(row)) if (nomes.includes(normHead(key)) && row[key] != null && row[key] !== "") return row[key];
+  return "";
+}
 function validarLinha(r, numero) {
   const nome = valor(r, ["nome", "nome_visitante", "nome_do_visitante", "visitante"]);
   const interno = valor(r, ["interno", "interno_visitado", "nome_do_interno", "nome_interno", "preso", "nome_do_preso"]);
@@ -47,8 +51,9 @@ function validarLinha(r, numero) {
   const parentesco = valor(r, ["parentesco", "vinculo"]);
   const tipoBruto = canon(valor(r, ["modalidade", "tipo_visita", "tipo_de_visita", "tipo"])) || "SOCIAL";
   const modalidade = tipoBruto === "VISITA SOCIAL" ? "SOCIAL" : tipoBruto === "VISITA ASSISTIDA" ? "ASSISTIDA" : tipoBruto === "VISITA INFANTIL" ? "INFANTIL" : tipoBruto;
-  const dataBruta = valor(r, ["data_visita", "data_da_visita", "data"]);
-  const dataVisita = dataBruta ? isoDate(dataBruta) : "";
+  const dataOriginal = valorOriginal(r, ["data_visita", "data_da_visita", "data"]);
+  const dataBruta = limpar(dataOriginal);
+  const dataVisita = dataBruta ? isoDate(dataOriginal) : "";
   const turnoBruto = canon(valor(r, ["turno", "periodo", "horario"]));
   const turno = turnoBruto === "MANHÃ" || turnoBruto === "MANHA" || turnoBruto === "MATUTINO" ? "MANHA" : turnoBruto === "VESPERTINO" ? "TARDE" : turnoBruto;
   const observacoes = valor(r, ["observacoes", "observacao", "obs"]);
