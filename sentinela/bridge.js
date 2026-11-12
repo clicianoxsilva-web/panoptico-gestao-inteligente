@@ -13,7 +13,7 @@
     if (html.includes('id="loginForm"') && !html.includes('Emblema da Polícia Penal')) {
       html=html.replace(/<article([^>]*)>/i,function(article){return article+'<img src="'+ROOT+'icon.svg" alt="Emblema da Polícia Penal do Maranhão" style="width:108px;height:132px;object-fit:contain;margin-bottom:14px">';});
     }
-    var boot = '<base href="' + ROOT + '"><meta name="theme-color" content="#031822"><meta name="referrer" content="no-referrer"><link rel="manifest" href="' + ROOT + 'manifest.webmanifest"><link rel="icon" href="' + ROOT + 'icon.svg"><link rel="apple-touch-icon" href="' + ROOT + 'icon.svg"><script src="' + ROOT + 'bridge.js?v=9012"><\/script>';
+    var boot = '<title>SENTINELA | Polícia Penal do Maranhão</title><base href="' + ROOT + '"><meta name="theme-color" content="#031822"><meta name="referrer" content="no-referrer"><link rel="manifest" href="' + ROOT + 'manifest.webmanifest"><link rel="icon" href="' + ROOT + 'icon.svg"><link rel="apple-touch-icon" href="' + ROOT + 'icon.svg"><script src="' + ROOT + 'bridge.js?v=9012.1"><\/script>';
     return html.replace(/<head([^>]*)>/i, function (head) { return head + boot; });
   }
 
